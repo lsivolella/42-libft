@@ -6,7 +6,7 @@
 #    By: lgoncalv <lgoncalv@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/07 10:31:36 by lgoncalv          #+#    #+#              #
-#    Updated: 2022/07/09 13:08:04 by lgoncalv         ###   ########.fr        #
+#    Updated: 2022/07/09 13:39:43 by lgoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,8 +80,8 @@ OBJS			= $(subst $(SRCS_PATH),$(OBJS_PATH),$(SRCS:%.c=%.o))
 
 # PATTERN RULE
 $(OBJS_PATH)/%.o : $(SRCS_PATH)/%.c
-	mkdir -p $(OBJS_PATH)
-	$(CC) $(C_FLAGS) $(INCLUDES) -c $< -o $@
+	@mkdir -p $(OBJS_PATH)
+	@$(CC) $(C_FLAGS) $(INCLUDES) -c $< -o $@
 
 all:	$(NAME)
 
