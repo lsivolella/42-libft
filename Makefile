@@ -6,33 +6,34 @@
 #    By: lgoncalv <lgoncalv@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/07 10:31:36 by lgoncalv          #+#    #+#              #
-#    Updated: 2022/07/09 11:32:39 by lgoncalv         ###   ########.fr        #
+#    Updated: 2022/07/09 12:31:48 by lgoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # COMPILER
-CC =			gcc
+CC				= gcc
 
 # FLAGS
-CFLAGS		= -Wall -Werror -Wextra
-INCLUDES		= -I $(INCLUDES_PATH)
+C_FLAGS			= -Wall -Werror -Wextra
+PRINTF_FLAGS	= -L $(PRINTF_PATH) -lftprintf
+INCLUDES		= -I $(INCLUDES_PATH) -I $(PRINTF_PATH)
 
 # PATH
 INCLUDES_PATH	= ./includes
-SRC_PATH		= ./sources
-OBJ_PATH		= ./objects
+LIBRARIES_PATH	= ./libraries
+SRCS_PATH		= ./sources
+OBJS_PATH		= ./objects
+PRINTF_PATH		= $(LIBRARIES_PATH)/printf
 
 # COMMANDS
 RM =			/bin/rm -f
 
 # NAMES
-NAME =			libft.a
-PROGRAM =		./a.out
-HEADER =		libft.h
-RANLIB =		ranlib
+NAME			= libft.a
+PRINTF			= $(PRINTF_PATH)/libftprintf.a
 
 # SOURCES
-SRC			= ft_memset.c\
+SRCS		= ft_memset.c\
 			ft_bzero.c\
 			ft_memcpy.c\
 			ft_memccpy.c\
@@ -74,31 +75,31 @@ SRC			= ft_memset.c\
 			ft_lstdelone.c\
 			ft_lstclear.c\
 			ft_lstiter.c\
-			ft_lstmap.c
+			ft_lstmap.c\
+			test.c
 
-SRC			:= $(addprefix $(SRC_PATH)/,$(SRC))
+SRCS			:= $(addprefix $(SRCS_PATH)/,$(SRCS))
 
 # OBJECTS
-OBJ			= $(subst $(SRC_PATH),$(OBJ_PATH),$(SRC:%.c=%.o))
+OBJS			= $(subst $(SRCS_PATH),$(OBJS_PATH),$(SRCS:%.c=%.o))
 
 # PATTERN RULE
-$(OBJ_PATH)/%.o : $(SRC_PATH)/%.c
-	mkdir -p $(OBJ_PATH)
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+$(OBJS_PATH)/%.o : $(SRCS_PATH)/%.c
+	mkdir -p $(OBJS_PATH)
+	$(CC) $(C_FLAGS) $(INCLUDES) -c $< -o $@
 
 all:	$(NAME)
 
-$(NAME): $(OBJ)
-	@ar -rsc $(NAME) $(OBJ)
-	@$(RANLIB) $(NAME)
+$(NAME): $(OBJS)
+	@ar -rsc $(NAME) $(OBJS)
 	@echo "[LIBFT] Library [$(NAME)] created!"
 
 clean:
-	@$(RM) $(OBJ)
+	@$(RM) $(OBJS)
 	@echo "[LIBFT] Objects removed!"
 
 fclean: clean
-	@$(RM) $(NAME) $(PROGRAM)
+	@$(RM) $(NAME)
 	@echo "[LIBFT] Library [$(NAME)] removed!"
 
 re: fclean all
@@ -108,7 +109,7 @@ rebonus: fclean bonus
 # .so = shared object -> library link happens at runtime
 # revise this command
 so:
-	$(CC) -fPIC $(CFLAGS) -c $(SRC)
-	gcc -shared -o libft.so $(OBJ)
+	$(CC) -fPIC $(C_FLAGS) -c $(SRCS)
+	gcc -shared -o libft.so $(OBJS)
 
 .PHONY: all bonus clean fclean re

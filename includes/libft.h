@@ -6,7 +6,7 @@
 /*   By: lgoncalv <lgoncalv@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 19:32:48 by lgoncalv          #+#    #+#             */
-/*   Updated: 2021/06/10 09:32:10 by lgoncalv         ###   ########.fr       */
+/*   Updated: 2022/07/09 12:33:49 by lgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+# include "ft_printf.h"
 
 typedef struct s_list
 {
