@@ -6,7 +6,7 @@
 #    By: lgoncalv <lgoncalv@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/07 10:31:36 by lgoncalv          #+#    #+#              #
-#    Updated: 2022/07/09 13:04:43 by lgoncalv         ###   ########.fr        #
+#    Updated: 2022/07/09 13:08:04 by lgoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,6 @@ SRCS		= ft_memset.c\
 			ft_lstclear.c\
 			ft_lstiter.c\
 			ft_lstmap.c\
-			test.c
 
 SRCS			:= $(addprefix $(SRCS_PATH)/,$(SRCS))
 
