@@ -1,3 +1,0 @@
-[submodule "libraries/printf"]
-	path = libraries/printf
-	url = https://github.com/lsivolella/42-printf.git

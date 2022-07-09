@@ -6,7 +6,7 @@
 #    By: lgoncalv <lgoncalv@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/07 10:31:36 by lgoncalv          #+#    #+#              #
-#    Updated: 2022/07/09 12:31:48 by lgoncalv         ###   ########.fr        #
+#    Updated: 2022/07/09 13:04:43 by lgoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,22 +15,18 @@ CC				= gcc
 
 # FLAGS
 C_FLAGS			= -Wall -Werror -Wextra
-PRINTF_FLAGS	= -L $(PRINTF_PATH) -lftprintf
-INCLUDES		= -I $(INCLUDES_PATH) -I $(PRINTF_PATH)
+INCLUDES		= -I $(INCLUDES_PATH)
 
 # PATH
 INCLUDES_PATH	= ./includes
-LIBRARIES_PATH	= ./libraries
 SRCS_PATH		= ./sources
 OBJS_PATH		= ./objects
-PRINTF_PATH		= $(LIBRARIES_PATH)/printf
 
 # COMMANDS
 RM =			/bin/rm -f
 
 # NAMES
 NAME			= libft.a
-PRINTF			= $(PRINTF_PATH)/libftprintf.a
 
 # SOURCES
 SRCS		= ft_memset.c\
