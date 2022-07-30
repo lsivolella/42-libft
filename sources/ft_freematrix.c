@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bool.h                                          :+:      :+:    :+:   */
+/*   ft_freematrix.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgoncalv <lgoncalv@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/24 19:32:48 by lgoncalv          #+#    #+#             */
-/*   Updated: 2022/07/25 20:17:51 by lgoncalv         ###   ########.fr       */
+/*   Created: 2022/07/24 16:43:31 by lgoncalv          #+#    #+#             */
+/*   Updated: 2022/07/30 10:23:51 by lgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_BOOL_H
-# define FT_BOOL_H
+#include "libft.h"
 
-typedef enum e_bool
+/***
+ * @brief
+ * @param matrix a pointer to pointer of any type
+ * @return the number of pointers freed
+ * or -1 if matrix is null
+ **/
+int	free_matrix(void **matrix)
 {
-	FALSE	= 0,
-	TRUE	= 1
-}	t_bool;
+	int	i;
 
-#endif
+	if (matrix == NULL)
+		return (-1);
+	i = -1;
+	while (matrix[++i] != NULL)
+		free(matrix[i]);
+	free(matrix);
+	return (i);
+}
